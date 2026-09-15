@@ -2,15 +2,9 @@ import React, { useState } from 'react'
 import { portfolioData } from '../portfolioData'
 import { postContact } from '../services/api'
 import {
-  MailIcon,
   CopyIcon,
   CheckIcon,
-  SendIcon,
-  LinkedinIcon,
-  GithubIcon,
-  TwitterIcon,
-  MapPinIcon,
-  SparklesIcon
+  SendIcon
 } from './Icons'
 
 export const Contact = () => {
@@ -84,7 +78,7 @@ export const Contact = () => {
       {/* Mobile Sticky Section Header */}
       <div className="mobile-section-header">
         <h2 style={{ fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#f8fafc' }}>
-          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>05.</span>
+          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>06.</span>
           Contact
         </h2>
       </div>
@@ -93,7 +87,7 @@ export const Contact = () => {
         {/* Intro */}
         <div>
           <span className="mono" style={{ fontSize: '0.875rem', color: '#5eead4', fontWeight: '600', display: 'block', marginBottom: '0.5rem' }}>
-            05. What&apos;s Next?
+            06. What&apos;s Next?
           </span>
           <h3 style={{ fontSize: '2rem', fontWeight: '800', color: '#f8fafc', letterSpacing: '-0.02em' }}>
             {contact.heading}
@@ -119,8 +113,7 @@ export const Contact = () => {
             }}
           >
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#5eead4', fontSize: '0.8rem', fontWeight: '600' }} className="mono">
-                <MailIcon className="w-4 h-4" />
+              <div style={{ display: 'flex', alignItems: 'center', color: '#5eead4', fontSize: '0.8rem', fontWeight: '600' }} className="mono">
                 <span>DIRECT INBOX</span>
               </div>
               <p style={{ marginTop: '0.5rem', color: '#f8fafc', fontWeight: '600', fontSize: '0.95rem', wordBreak: 'break-all' }}>
@@ -172,8 +165,7 @@ export const Contact = () => {
             }}
           >
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#38bdf8', fontSize: '0.8rem', fontWeight: '600' }} className="mono">
-                <MapPinIcon className="w-4 h-4" />
+              <div style={{ display: 'flex', alignItems: 'center', color: '#38bdf8', fontSize: '0.8rem', fontWeight: '600' }} className="mono">
                 <span>LOCATION & AVAILABILITY</span>
               </div>
               <p style={{ marginTop: '0.5rem', color: '#e2e8f0', fontSize: '0.9rem' }}>
@@ -200,9 +192,8 @@ export const Contact = () => {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
-            <h4 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <SparklesIcon className="w-4 h-4" style={{ color: '#5eead4' }} />
-              <span>Send a Direct Message</span>
+            <h4 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#f8fafc' }}>
+              Send a Direct Message
             </h4>
             <span className="mono" style={{ fontSize: '0.75rem', color: '#64748b' }}>
               Quick Dispatch
@@ -354,7 +345,6 @@ export const Contact = () => {
       {/* Toast Notification Alert */}
       {toastMessage && (
         <div className="toast-notification" role="status" aria-live="polite">
-          <SparklesIcon className="w-5 h-5" style={{ color: '#5eead4', flexShrink: 0 }} />
           <span style={{ fontSize: '0.875rem', fontWeight: '500' }}>{toastMessage}</span>
         </div>
       )}

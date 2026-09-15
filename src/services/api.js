@@ -7,6 +7,7 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 })
 
+
 export class ApiError extends Error {
   constructor(message, { status, errors } = {}) {
     super(message)
@@ -15,6 +16,7 @@ export class ApiError extends Error {
     this.errors = errors
   }
 }
+
 
 export async function postContact(payload) {
   try {
@@ -32,5 +34,6 @@ export async function postContact(payload) {
     })
   }
 }
+
 
 export default api

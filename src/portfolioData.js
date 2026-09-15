@@ -10,7 +10,7 @@ export const portfolioData = {
     },
     location: "India",
     email: "vishalks.software@gmail.com",
-    resumeUrl: "#resume"
+    resumeUrl: "/resume.pdf"
   },
 
   socials: [
@@ -22,9 +22,15 @@ export const portfolioData = {
     },
     {
       name: "LinkedIn",
-      url: "www.linkedin.com/in/vishalks2006",
+      url: "https://www.linkedin.com/in/vishalks2006",
       icon: "LinkedinIcon",
       label: "LinkedIn Profile"
+    },
+    {
+      name: "Email",
+      url: "mailto:vishalks.software@gmail.com",
+      icon: "MailIcon",
+      label: "Send direct email"
     },
     {
       name: "LeetCode",
@@ -33,20 +39,34 @@ export const portfolioData = {
       label: "Coding Profile"
     },
     {
-      name: "Email",
-      url: "mailto:vishalks.software@gmail.com",
-      icon: "MailIcon",
-      label: "Send direct email"
+      name: "Instagram",
+      url: "",
+      icon: "InstagramIcon",
+      label: "Instagram Profile"
+    },
+    {
+      name: "Facebook",
+      url: "",
+      icon: "FacebookIcon",
+      label: "Facebook Profile"
+    },
+    {
+      name: "YouTube",
+      url: "",
+      icon: "YoutubeIcon",
+      label: "YouTube Channel"
     }
   ],
 
   navItems: [
-    { id: "about", label: "ABOUT", number: "01" },
-    // { id: "experience", label: "EXPERIENCE", number: "02" },
-    { id: "projects", label: "PROJECTS", number: "02" },
-    { id: "skills", label: "SKILLS", number: "03" },
-    { id: "certificates", label: "CERTIFICATES", number: "04" },
-    { id: "contact", label: "CONTACT", number: "05" }
+    { id: "welcome", label: "WELCOME", number: "01" },
+    { id: "about", label: "ABOUT", number: "02" },
+    // { id: "experience", label: "EXPERIENCE", number: "03" },
+    { id: "projects", label: "PROJECTS", number: "03" },
+    { id: "skills", label: "SKILLS", number: "04" },
+    { id: "certificates", label: "CERTIFICATES", number: "05" },
+    { id: "gallery", label: "GALLERY", number: "06" },
+    { id: "contact", label: "CONTACT", number: "07" }
   ],
 
   about: {
@@ -216,6 +236,30 @@ export const portfolioData = {
       credentialId: 'DSA-2024-203',
       image: '/certificates/certificate3.jpeg',
       link: '/certificates/certificate3.jpeg'
+    }
+  ],
+
+  gallery: [
+    {
+      id: 1,
+      title: "Python for Everybody Specialization",
+      category: "Academic & Certification",
+      image: "/certificates/certificate-1.jpeg",
+      caption: "University of Michigan specialization certificate in Python programming, network data, and databases."
+    },
+    {
+      id: 2,
+      title: "Full Stack Web Development",
+      category: "Full Stack Engineering",
+      image: "/certificates/certificate-2.png",
+      caption: "Certification in front-end and back-end web development principles, REST APIs, and architecture."
+    },
+    {
+      id: 3,
+      title: "Problem Solving with Data Structures",
+      category: "Algorithms & Competitive Coding",
+      image: "/certificates/certificate3.jpeg",
+      caption: "Advanced algorithmic problem-solving and optimization certificate from Skillrack Academy."
     }
   ],
 

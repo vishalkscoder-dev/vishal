@@ -21,8 +21,7 @@ export const Projects = () => {
             <div>
               {/* Header with Project Title & Quick Link Icons */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {/* <h3 style={{ fontSize: '1.05rem', fontWeight: '600' }}>
-                  
+                <h3 style={{ fontSize: '1.05rem', fontWeight: '600' }}>
                   <a
                     href={project.liveUrl || project.githubUrl}
                     target="_blank"
@@ -34,13 +33,11 @@ export const Projects = () => {
                       <ArrowUpRightIcon className="w-4 h-4" />
                     </span>
                   </a>
-                </h3> */}
+                </h3>
 
                 {/* External Action Links */}
-                
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   {project.githubUrl && (
-                    
                     <a
                       href={project.githubUrl}
                       target="_blank"
@@ -72,9 +69,17 @@ export const Projects = () => {
               </div>
 
               {/* Description */}
-              <p style={{ marginTop: '0.75rem', fontSize: '0.925rem', color: '#94a3b8', lineHeight: '1.6' }}>
-                {project.description}
-              </p>
+              <div style={{ marginTop: '0.75rem', fontSize: '0.925rem', color: '#94a3b8', lineHeight: '1.6' }}>
+                {Array.isArray(project.description) ? (
+                  project.description.map((para, pIdx) => (
+                    <p key={pIdx} style={{ marginTop: pIdx > 0 ? '0.5rem' : '0' }}>
+                      {para}
+                    </p>
+                  ))
+                ) : (
+                  <p>{project.description}</p>
+                )}
+              </div>
 
               {/* Highlights */}
               {project.highlights && (

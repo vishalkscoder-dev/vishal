@@ -1,72 +1,46 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Spotlight } from './components/Spotlight'
+import { HeroVideo } from './components/HeroVideo'
 import { Header } from './components/Header'
 import { About } from './components/About'
-import { Experience } from './components/Experience'
 import { Projects } from './components/Projects'
 import { Skills } from './components/Skills'
 import { Certificates } from './components/Certificates'
+import { Gallery } from './components/Gallery'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 
 function App() {
-  const [activeSection, setActiveSection] = useState('about')
+  const [activeSection, setActiveSection] = useState('welcome')
 
-  useEffect(() => {
-    const sectionIds = ['about', 'experience', 'projects', 'skills', 'certificates', 'contact']
-    
-    // Smooth scrollspy using IntersectionObserver
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id)
-        }
-      })
-    }
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -60% 0px',
-      threshold: 0
-    }
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions)
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
-
-    return () => {
-      sectionIds.forEach((id) => {
-        const el = document.getElementById(id)
-        if (el) observer.unobserve(el)
-      })
-    }
-  }, [])
+  const handleNavigate = (sectionId) => {
+    setActiveSection(sectionId)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <div className="relative">
       {/* Dynamic Cursor Spotlight Overlay */}
       <Spotlight />
 
+      {/* Full Edge-to-Edge Hero Video Backdrop Layer */}
+      <HeroVideo isVisible={activeSection === 'welcome'} />
+
       {/* Main Two-Column Container */}
-      <div className="portfolio-layout">
+      <div className="portfolio-layout" style={{ position: 'relative', zIndex: 1 }}>
         {/* Left Sticky Header & Nav */}
-        <Header activeSection={activeSection} />
+        <Header activeSection={activeSection} onNavigate={handleNavigate} />
 
         {/* Right Scrollable Content */}
         <main className="right-content">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6rem' }}>
-            <About />
-            {/* <Experience /> */}
-            <Projects />
-            <Skills />
-            <Certificates />
-            <Contact />
-          </div>
+          {activeSection === 'about' && <About />}
+          {activeSection === 'projects' && <Projects />}
+          {activeSection === 'skills' && <Skills />}
+          {activeSection === 'certificates' && <Certificates />}
+          {activeSection === 'gallery' && <Gallery />}
+          {activeSection === 'contact' && <Contact />}
 
-          <Footer />
+          {activeSection !== 'welcome' && <Footer />}
         </main>
       </div>
     </div>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { portfolioData } from '../portfolioData'
-import { CodeIcon, TerminalIcon } from './Icons'
 
 export const Skills = () => {
   const { skillsData } = portfolioData
@@ -10,7 +9,7 @@ export const Skills = () => {
       {/* Mobile Sticky Section Header */}
       <div className="mobile-section-header">
         <h2 style={{ fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#f8fafc' }}>
-          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>04.</span>
+          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>03.</span>
           Skills
         </h2>
       </div>
@@ -35,8 +34,7 @@ export const Skills = () => {
               e.currentTarget.style.backgroundColor = 'rgba(30, 41, 59, 0.35)'
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-              <TerminalIcon className="w-4 h-4" style={{ color: '#5eead4' }} />
+            <div style={{ marginBottom: '1rem' }}>
               <h3 style={{ fontSize: '0.95rem', fontWeight: '600', color: '#e2e8f0', letterSpacing: '-0.01em' }}>
                 {category.category}
               </h3>

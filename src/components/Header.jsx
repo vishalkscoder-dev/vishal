@@ -6,7 +6,11 @@ import {
   TwitterIcon,
   MailIcon,
   CodeIcon,
-  FileTextIcon
+  FileTextIcon,
+  ArrowUpRightIcon,
+  InstagramIcon,
+  FacebookIcon,
+  YoutubeIcon
 } from './Icons'
 
 const iconMap = {
@@ -15,22 +19,35 @@ const iconMap = {
   TwitterIcon,
   MailIcon,
   CodeIcon,
-  FileTextIcon
+  FileTextIcon,
+  InstagramIcon,
+  FacebookIcon,
+  YoutubeIcon
 }
 
-export const Header = ({ activeSection }) => {
+export const Header = ({ activeSection, onNavigate }) => {
   const { personal, socials, navItems } = portfolioData
 
   const scrollToSection = (e, id) => {
     e.preventDefault()
-    const element = document.getElementById(id)
-    if (element) {
-      const topOffset = element.getBoundingClientRect().top + window.pageYOffset - 30
-      window.scrollTo({
-        top: topOffset,
-        behavior: 'smooth'
-      })
+    if (onNavigate) {
+      onNavigate(id)
     }
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
+  const handleHeroClick = (e) => {
+    e.preventDefault()
+    if (onNavigate) {
+      onNavigate('welcome')
+    }
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
   return (
@@ -46,7 +63,7 @@ export const Header = ({ activeSection }) => {
 
         {/* Name & Title */}
         <h1 style={{ fontSize: '2.75rem', lineHeight: '1.1', fontWeight: '800', color: '#f8fafc', letterSpacing: '-0.03em' }}>
-          <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <a href="/" onClick={handleHeroClick} style={{ textDecoration: 'none', color: 'inherit' }}>
             {personal.name}
           </a>
         </h1>
@@ -85,24 +102,66 @@ export const Header = ({ activeSection }) => {
       </div>
 
       {/* Social Links & Resume Button */}
-      <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+      <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-          {socials.map((social) => {
-            const IconComponent = iconMap[social.icon] || MailIcon
-            return (
-              <a
-                key={social.name}
-                href={social.url}
-                target={social.url.startsWith('mailto:') ? '_self' : '_blank'}
-                rel="noreferrer noopener"
-                className="social-icon-btn"
-                aria-label={social.label}
-                title={social.name}
-              >
-                <IconComponent className="w-5 h-5" />
-              </a>
-            )
-          })}
+          {socials
+            .filter((social) => social.url && social.url.trim() !== '')
+            .map((social) => {
+              const IconComponent = iconMap[social.icon] || MailIcon
+              return (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target={social.url.startsWith('mailto:') ? '_self' : '_blank'}
+                  rel="noreferrer noopener"
+                  className="social-icon-btn"
+                  aria-label={social.label}
+                  title={social.name}
+                >
+                  <IconComponent className="w-5 h-5" />
+                </a>
+              )
+            })}
+
+          {personal.resumeUrl && (
+            <a
+              href={personal.resumeUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="Open Resume in new tab"
+              title="View Resume"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                padding: '0.45rem 0.85rem',
+                borderRadius: '0.5rem',
+                border: '1px solid rgba(94, 234, 212, 0.3)',
+                backgroundColor: 'rgba(94, 234, 212, 0.08)',
+                color: '#5eead4',
+                fontSize: '0.78rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: '600',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(94, 234, 212, 0.18)'
+                e.currentTarget.style.borderColor = 'rgba(94, 234, 212, 0.6)'
+                e.currentTarget.style.transform = 'translateY(-1px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(94, 234, 212, 0.08)'
+                e.currentTarget.style.borderColor = 'rgba(94, 234, 212, 0.3)'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+            >
+              <FileTextIcon className="w-3.5 h-3.5" />
+              <span>Resume</span>
+              <ArrowUpRightIcon className="w-3.5 h-3.5" />
+            </a>
+          )}
         </div>
 
         {/* Quick Contact shortcut hint */}
