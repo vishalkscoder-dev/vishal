@@ -45,7 +45,7 @@ export const About = () => {
         >
           Core Engineering Focus
         </h3>
-        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.6rem 1.25rem' }}>
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.6rem 1.25rem' }}>
           {about.highlights.map((highlight, idx) => (
             <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', color: '#cbd5e1' }}>
               <span style={{ color: '#5eead4', fontSize: '0.85rem' }}>▹</span>

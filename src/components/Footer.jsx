@@ -7,28 +7,30 @@ export const Footer = () => {
   return (
     <footer style={{ marginTop: '5rem', paddingBottom: '3rem', fontSize: '0.825rem', color: '#64748b', lineHeight: '1.6' }}>
       {/* Text-based Social Links */}
-      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.85rem 1.25rem', marginBottom: '1.5rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem 0.75rem', marginBottom: '1.5rem' }}>
         {socials
           .filter((s) => s.url && s.url.trim() !== '')
-          .map((social) => (
-            <a
-              key={social.name}
-              href={social.url}
-              target={social.url.startsWith('mailto:') ? '_self' : '_blank'}
-              rel="noreferrer noopener"
-              className="mono"
-              style={{
-                fontSize: '0.78rem',
-                color: '#94a3b8',
-                textDecoration: 'none',
-                transition: 'color 0.2s ease',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#5eead4')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#94a3b8')}
-            >
-              {social.name} ↗
-            </a>
+          .map((social, idx, arr) => (
+            <React.Fragment key={social.name}>
+              <a
+                href={social.url}
+                target={social.url.startsWith('mailto:') ? '_self' : '_blank'}
+                rel="noreferrer noopener"
+                className="mono"
+                style={{
+                  fontSize: '0.78rem',
+                  color: '#94a3b8',
+                  textDecoration: 'none',
+                  transition: 'color 0.2s ease',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#5eead4')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#94a3b8')}
+              >
+                {social.name}
+              </a>
+              {idx < arr.length - 1 && <span style={{ color: '#475569' }}>|</span>}
+            </React.Fragment>
           ))}
       </div>
 

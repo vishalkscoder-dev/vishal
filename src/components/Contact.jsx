@@ -78,7 +78,7 @@ export const Contact = () => {
       {/* Mobile Sticky Section Header */}
       <div className="mobile-section-header">
         <h2 style={{ fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#f8fafc' }}>
-          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>06.</span>
+          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>07.</span>
           Contact
         </h2>
       </div>
@@ -87,9 +87,9 @@ export const Contact = () => {
         {/* Intro */}
         <div>
           <span className="mono" style={{ fontSize: '0.875rem', color: '#5eead4', fontWeight: '600', display: 'block', marginBottom: '0.5rem' }}>
-            06. What&apos;s Next?
+            07. What&apos;s Next?
           </span>
-          <h3 style={{ fontSize: '2rem', fontWeight: '800', color: '#f8fafc', letterSpacing: '-0.02em' }}>
+          <h3 style={{ fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: '800', color: '#f8fafc', letterSpacing: '-0.02em' }}>
             {contact.heading}
           </h3>
           <p style={{ marginTop: '0.75rem', fontSize: '0.95rem', color: '#94a3b8', lineHeight: '1.65' }}>
@@ -98,7 +98,7 @@ export const Contact = () => {
         </div>
 
         {/* Direct Contact Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '1rem' }}>
           {/* Email Quick Action Card */}
           <div
             style={{
@@ -233,7 +233,7 @@ export const Contact = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '1rem' }}>
                 <div>
                   <label htmlFor="name" className="form-label">
                     Your Name <span style={{ color: '#5eead4' }}>*</span>

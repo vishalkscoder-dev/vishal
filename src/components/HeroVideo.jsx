@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import heroVideoSrc from '../assets/vishal.mp4'
 
 // Dynamically resolve local video file placed in assets or public
@@ -10,43 +10,8 @@ const resolvedHeroVideo =
   Object.values(videoModules)[0] ||
   null
 
-export const HeroVideo = ({ isVisible = true }) => {
-  const [heroHeight, setHeroHeight] = useState('100vh')
+export const HeroVideo = ({ isVisible = true, isFading = false, isPendingFade = false }) => {
   const videoRef = useRef(null)
-
-  useEffect(() => {
-    const updateHeroHeight = () => {
-      const aboutEl = document.getElementById('about')
-      if (aboutEl) {
-        const rect = aboutEl.getBoundingClientRect()
-        const scrollY = window.pageYOffset || document.documentElement.scrollTop
-        const aboutBottom = rect.bottom + scrollY
-        // Covers full initial viewport height (100vh) or down past the bottom of the About section
-        const minHeight = window.innerHeight
-        const calculatedHeight = Math.max(minHeight, Math.round(aboutBottom + 48))
-        setHeroHeight(`${calculatedHeight}px`)
-      } else {
-        setHeroHeight('100vh')
-      }
-    }
-
-    updateHeroHeight()
-    window.addEventListener('resize', updateHeroHeight)
-    const timer = setTimeout(updateHeroHeight, 250)
-
-    let ro = null
-    const aboutEl = document.getElementById('about')
-    if (typeof ResizeObserver !== 'undefined' && aboutEl) {
-      ro = new ResizeObserver(updateHeroHeight)
-      ro.observe(aboutEl)
-    }
-
-    return () => {
-      window.removeEventListener('resize', updateHeroHeight)
-      clearTimeout(timer)
-      if (ro) ro.disconnect()
-    }
-  }, [])
 
   useEffect(() => {
     if (isVisible && videoRef.current) {
@@ -56,19 +21,19 @@ export const HeroVideo = ({ isVisible = true }) => {
 
   return (
     <div
-      className="hero-video-backdrop"
+      className={`hero-video-backdrop ${isFading ? 'hero-video-fade-in' : ''}`}
       aria-hidden="true"
       style={{
         position: 'absolute',
         top: 0,
         left: 0,
         width: '100%',
-        minHeight: '100vh',
-        height: heroHeight,
+        height: '100vh',
         overflow: 'hidden',
         pointerEvents: 'none',
         zIndex: 0,
-        display: isVisible ? 'block' : 'none'
+        display: isVisible ? 'block' : 'none',
+        opacity: isPendingFade ? 0 : 1
       }}
     >
       <video
@@ -108,3 +73,4 @@ export const HeroVideo = ({ isVisible = true }) => {
     </div>
   )
 }
+

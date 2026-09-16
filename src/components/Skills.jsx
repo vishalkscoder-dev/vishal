@@ -9,7 +9,7 @@ export const Skills = () => {
       {/* Mobile Sticky Section Header */}
       <div className="mobile-section-header">
         <h2 style={{ fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#f8fafc' }}>
-          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>03.</span>
+          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>04.</span>
           Skills
         </h2>
       </div>
@@ -19,7 +19,7 @@ export const Skills = () => {
           <div
             key={index}
             style={{
-              padding: '1.25rem 1.5rem',
+              padding: '1.25rem',
               backgroundColor: 'rgba(30, 41, 59, 0.35)',
               borderRadius: '0.75rem',
               border: '1px solid rgba(148, 163, 184, 0.1)',

@@ -10,7 +10,7 @@ export const Projects = () => {
       {/* Mobile Sticky Section Header */}
       <div className="mobile-section-header">
         <h2 style={{ fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#f8fafc' }}>
-          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>02.</span>
+          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>03.</span>
           Projects
         </h2>
       </div>

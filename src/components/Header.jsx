@@ -1,29 +1,9 @@
 import React from 'react'
 import { portfolioData } from '../portfolioData'
 import {
-  GithubIcon,
-  LinkedinIcon,
-  TwitterIcon,
-  MailIcon,
-  CodeIcon,
   FileTextIcon,
-  ArrowUpRightIcon,
-  InstagramIcon,
-  FacebookIcon,
-  YoutubeIcon
+  ArrowUpRightIcon
 } from './Icons'
-
-const iconMap = {
-  GithubIcon,
-  LinkedinIcon,
-  TwitterIcon,
-  MailIcon,
-  CodeIcon,
-  FileTextIcon,
-  InstagramIcon,
-  FacebookIcon,
-  YoutubeIcon
-}
 
 export const Header = ({ activeSection, onNavigate }) => {
   const { personal, socials, navItems } = portfolioData
@@ -33,10 +13,6 @@ export const Header = ({ activeSection, onNavigate }) => {
     if (onNavigate) {
       onNavigate(id)
     }
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
   }
 
   const handleHeroClick = (e) => {
@@ -44,10 +20,6 @@ export const Header = ({ activeSection, onNavigate }) => {
     if (onNavigate) {
       onNavigate('welcome')
     }
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
   }
 
   return (
@@ -62,8 +34,8 @@ export const Header = ({ activeSection, onNavigate }) => {
         </div>
 
         {/* Name & Title */}
-        <h1 style={{ fontSize: '2.75rem', lineHeight: '1.1', fontWeight: '800', color: '#f8fafc', letterSpacing: '-0.03em' }}>
-          <a href="/" onClick={handleHeroClick} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 2.75rem)', lineHeight: '1.1', fontWeight: '800', color: '#f8fafc', letterSpacing: '-0.03em' }}>
+          <a href="#welcome" onClick={handleHeroClick} style={{ textDecoration: 'none', color: 'inherit' }}>
             {personal.name}
           </a>
         </h1>
@@ -76,9 +48,9 @@ export const Header = ({ activeSection, onNavigate }) => {
           {personal.tagline}
         </p>
 
-        {/* Desktop Navigation */}
-        <nav className="desktop-nav" style={{ marginTop: '3.5rem', display: 'none' }} aria-label="In-page jump links">
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+        {/* Navigation */}
+        <nav className="portfolio-nav" aria-label="In-page jump links">
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
             {navItems.map((item) => {
               const isActive = activeSection === item.id
               return (
@@ -89,7 +61,7 @@ export const Header = ({ activeSection, onNavigate }) => {
                     className={`nav-link ${isActive ? 'active' : ''}`}
                   >
                     <span className="nav-indicator-line"></span>
-                    <span className="mono" style={{ marginRight: '0.5rem', opacity: isActive ? 1 : 0.6, fontSize: '0.75rem' }}>
+                    <span className="mono" style={{ marginRight: '0.6rem', opacity: isActive ? 1 : 0.6, fontSize: '0.825rem' }}>
                       {item.number}
                     </span>
                     <span>{item.label}</span>
@@ -102,28 +74,36 @@ export const Header = ({ activeSection, onNavigate }) => {
       </div>
 
       {/* Social Links & Resume Button */}
-      <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+      <div style={{ marginTop: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', position: 'relative', zIndex: 1 }}>
+        {/* Small text links */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', fontSize: '0.85rem' }} className="mono">
           {socials
             .filter((social) => social.url && social.url.trim() !== '')
-            .map((social) => {
-              const IconComponent = iconMap[social.icon] || MailIcon
-              return (
+            .map((social, idx, arr) => (
+              <React.Fragment key={social.name}>
                 <a
-                  key={social.name}
                   href={social.url}
                   target={social.url.startsWith('mailto:') ? '_self' : '_blank'}
                   rel="noreferrer noopener"
-                  className="social-icon-btn"
-                  aria-label={social.label}
-                  title={social.name}
+                  style={{
+                    color: '#94a3b8',
+                    textDecoration: 'none',
+                    fontSize: '0.825rem',
+                    transition: 'color 0.2s ease',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#5eead4')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#94a3b8')}
                 >
-                  <IconComponent className="w-5 h-5" />
+                  {social.name}
                 </a>
-              )
-            })}
+                {idx < arr.length - 1 && <span style={{ color: '#475569' }}>|</span>}
+              </React.Fragment>
+            ))}
+        </div>
 
-          {personal.resumeUrl && (
+        {personal.resumeUrl && (
+          <div>
             <a
               href={personal.resumeUrl}
               target="_blank"
@@ -161,8 +141,8 @@ export const Header = ({ activeSection, onNavigate }) => {
               <span>Resume</span>
               <ArrowUpRightIcon className="w-3.5 h-3.5" />
             </a>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Quick Contact shortcut hint */}
         <div style={{ fontSize: '0.8rem', color: '#64748b' }}>

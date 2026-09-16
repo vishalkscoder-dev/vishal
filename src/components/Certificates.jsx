@@ -49,7 +49,7 @@ export const Certificates = () => {
     <section id="certificates" className="scroll-mt-16 lg:scroll-mt-24" aria-label="Professional certificates">
       <div className="mobile-section-header">
         <h2 style={{ fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#f8fafc' }}>
-          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>04.</span>
+          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>05.</span>
           Certificates
         </h2>
       </div>

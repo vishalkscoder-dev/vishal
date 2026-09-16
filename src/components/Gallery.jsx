@@ -45,7 +45,7 @@ export const Gallery = () => {
       {/* Mobile Sticky Section Header */}
       <div className="mobile-section-header">
         <h2 style={{ fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#f8fafc' }}>
-          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>05.</span>
+          <span className="mono" style={{ color: '#5eead4', marginRight: '0.5rem' }}>06.</span>
           Gallery
         </h2>
       </div>
