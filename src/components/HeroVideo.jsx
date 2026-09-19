@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react'
-import heroVideoSrc from '../assets/vishal.mp4'
+import heroVideoSrc from '../assets/vishal1.mp4'
 
 // Dynamically resolve local video file placed in assets or public
 const videoModules = import.meta.glob('../assets/*.mp4', { eager: true, import: 'default' })
 const resolvedHeroVideo =
   heroVideoSrc ||
-  videoModules['../assets/vishal.mp4'] ||
+  videoModules['../assets/vishal1.mp4'] ||
   videoModules['../assets/hero-background.mp4'] ||
   Object.values(videoModules)[0] ||
   null
